@@ -2,10 +2,21 @@ name: Display Workflow
 on: push
 
 jobs:
+  show-name-with-github-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: list before action
+        run: ls -a
+      - name: checkout using action
+        uses: actions/checkout@v3
+      - name: list after action
+        run: ls -a
   show-name-of-folder:
     runs-on: ubuntu-latest
     steps:
       - name: List files before
+        run: ls -a
+      - name: Checkout
         run: |
           git init
           git remote add origin "https://$GITHUB_ACTOR:${{secrets.GITHUB_TOKEN}}@github.com/$GITHUB_REPOSITORY.git"
