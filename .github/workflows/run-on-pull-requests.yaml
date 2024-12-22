@@ -1,10 +1,13 @@
 name: runs-on-pull-requests
-on: [pull_request]
+on:
+  pull_request:
+    types: [opened, reopened]
+
 jobs:
-  display-the-name:
+  checkout-test:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout-test
+      - name: test the refs
         run: |
           echo $GITHUB_SHA
           echo $GITHUB_REF
