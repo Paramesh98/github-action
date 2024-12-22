@@ -1,0 +1,9 @@
+name: Workflow Commands
+on: [push]
+
+jobs:
+  display-error:
+    runs-on: ubuntu-latest
+    steps:
+      - name: show error message
+        run: echo "::error::Missing Semicolor" # this will displayed as error message in workflow
