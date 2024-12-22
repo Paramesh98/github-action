@@ -22,5 +22,3 @@ jobs:
     steps:
       - name: Display strings
         run: Write-Output "Hello World from Windows"
-      - name: Display error
-        run: runsomething

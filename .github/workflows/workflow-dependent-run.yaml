@@ -1,0 +1,12 @@
+name: Workflow Run After Another
+on:
+  workflow_run:
+    workflows: [First Workflow]
+    types: [completed]
+
+jobs:
+  echo-a-string-value:
+    runs-on: ubuntu-latest
+    steps:
+      - name: display-somethig
+        run: echo "Hello world"
