@@ -1,0 +1,15 @@
+name: Schudled Workflow
+on:
+  schedule:
+    - cron: "0 14 * * *"
+    - cron: "0/5 * * * *"
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: action/stale@v8
+        with:
+          stale-issue-message: "This is some message"
+          days-before-stale: 1
+          days-after-close: 5
