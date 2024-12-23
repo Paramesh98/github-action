@@ -1,7 +1,44 @@
 name: Manually Triggered
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+    inputs:
+      string:
+        description: Add a string value
+        type: string
+        required: true
+        default: "Some Default Value"
+      number:
+        description: Add a number
+        type: number
+        required: true
+        default: 99
+      option:
+        description: select an option
+        type: choice
+        required: true
+        default: "Option 3"
+        options:
+          - Option 1
+          - Option 2
+          - Option 3
+      boolean:
+        description: Add a boolean value
+        type: boolean
+        default: false
+        required: true
+      environment:
+        description: Environment
+        type: environment
+        required: true
+
 jobs:
   log-the-ref:
     runs-on: ubuntu-latest
     steps:
       - run: echo $GITHUB_REF
+      - run: |
+          echo "String: ${{inputs.string}}"
+          echo "Number: ${{inputs.number}}"
+          echo "Boolean: ${{inputs.boolean}}"
+          echo "Option: ${{inputs.option}}"
+          echo "Environment: ${{inputs.environment}}"
