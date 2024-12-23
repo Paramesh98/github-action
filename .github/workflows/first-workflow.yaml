@@ -1,6 +1,25 @@
 name: First Workflow
-on: [push]
+on:
+  push:
+    branches:
+      # - main
+      # - "feature/*" # matches featre/featA, feature/featB, not feature/feata/feab
+      # - "features/**/*" # matches feature/feata/featb
+      - "!feature/*" # will not run for feature/feat # order is important
 
+    # branches-ignore: # should not have both branches and branches ignore
+    #   - develop
+    tags:
+      - v1
+      - v1.1
+      - "!v1.1.1"
+    paths:
+      - "**.js"
+      - "!app.js"
+  pull_request:
+    types: [opened, reopened]
+    branches:
+      - "main"
 jobs:
   run-shell-commands:
     runs-on: ubuntu-latest
@@ -22,5 +41,3 @@ jobs:
     steps:
       - name: Display strings
         run: Write-Output "Hello World from Windows"
-      - name: Display error
-        run: runsomething
